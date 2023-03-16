@@ -5,7 +5,6 @@ cuid: clf8yly4i079mxnnvab4h7w15
 slug: introducing-cache-in-your-system
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1678841038565/ecad912c-f5c4-4567-bd00-a68211f16e92.jpeg
 tags: software-architecture, caching, devops, distributed-system
-
 ---
 
 ---
@@ -22,11 +21,11 @@ If one would search for caching it will find a plethora of tutorials teaching ho
 
 Usually, we can find bad cache designs when we stumble on the most important metrics for it: hit ratio and miss ratio. As a brief overview, we can define these metrics as follow:
 
-**Hit ratio** : when the cache **has** a key and can provide the value for the system to use, we call it a *hit*. The metric is simply the *number of hits / number of lookups*.
+**Hit ratio** : when the cache **has** a key and can provide the value for the system to use, we call it a _hit_. The metric is simply the _number of hits / number of lookups_.
 
-**Miss ratio** : when the cache **hasn’t** the key and the value must be computed for the system to use, we call it a *miss*. The metric is simply the *number of misses / number of lookups*.
+**Miss ratio** : when the cache **hasn’t** the key and the value must be computed for the system to use, we call it a _miss_. The metric is simply the _number of misses / number of lookups_.
 
-The *number of lookups* is simply the total quantity of cache accesses, which is *lookups = hits + misses*.
+The _number of lookups_ is simply the total quantity of cache accesses, which is _lookups = hits + misses_.
 
 You can know that the cache is not being efficient if it has a low hit ratio and, therefore, a high miss ratio. What low or high means will depend on your problem. Discovering your baseline metrics can only be achieved through our first guideline.
 
@@ -62,18 +61,13 @@ One scenario that you should be careful is with memoization. For those coming fr
 
 Next, you need to understand your access pattern in order to choose your cache algorithm and possible strategies. Each one will have trade-offs, you can combine some of them and you should experiment because in this area data will be better to guide you.
 
-* **FIFO (First in First out)**: this is the simplest algorithm where the cache works like a queue and evict the first block to enter, independent of how many times it was used. Through time, you will have the most used keys remaining in the cache, since even if a block was evicted, since it is highly used, duplicated blocks of this key will be presented at the queue. This strategy is really simple to implement and has low overhead but also has an inefficient usage of memory in comparison to other algorithms.
-    
-* **LRU (Least Recently Used)**: probably the most used cache algorithm, it tracks when some block was used and evict the one with fewer accesses. Hence it keeps the most used keys in the cache but with better memory usage. As a tradeoff, it has a more complex and costly implementation since it has to add and track age bits in the cache blocks.
-    
-* **LFU (Least Frequently Used)**: imagine that you are using an LRU cache and you have 100 accesses in the last second. There were 80 hits in the key A, 19 hits in key B and 1 hit in key C. If your cache is full, in the next miss that needs to load a new key, your cache would not evict C, because it was the most recent one accessed. This can be really bad since we are probably removing a more usage key (A or B) in favor of C. That is the problem that the LFU algorithm addresses since it keep the most frequent usage keys, it would evict the key C from our example because it has a small access frequency. This is a really interesting model and probably is better suited to most use cases, but as a pattern, it also has more overhead than LRU because how it has to keep track of how many times a block was accessed in relation to how many accesses happened to the cache.
-    
-* **TTL (Time to Live)**: one really common strategy is time to live, an algorithm that evicts blocks that are older than a certain pre-defined timespan. It is used for more volatile data and usually with two cases: for low cardinality keys that can’t grow the memory footprint to the point where one block would be evicted or in combination with other cache strategies (like the ones mentioned above) to provide more refresh opportunities.
-    
-* **Stale data** : we say that a block is stale when it passes its expiration time and should be evicted or refreshed. The stale data strategy is an augmentation of TTL that instead of eliminating the block from the cache once the time to live expires, it runs a refresh function (in case of memoization it reruns the function) that will compute a new value for the key. During this time, the stale (old) data is served for those that access the cache. It can also be the case where if the refresh function fails, it simply maintains the block in the cache, that may be evicted by some algorithm, but is not eliminated by its expiration. This can be a really powerful strategy for increased resilience if your system support living with a possibly long-living stale data.
-    
+- **FIFO (First in First out)**: this is the simplest algorithm where the cache works like a queue and evict the first block to enter, independent of how many times it was used. Through time, you will have the most used keys remaining in the cache, since even if a block was evicted, since it is highly used, duplicated blocks of this key will be presented at the queue. This strategy is really simple to implement and has low overhead but also has an inefficient usage of memory in comparison to other algorithms.
+- **LRU (Least Recently Used)**: probably the most used cache algorithm, it tracks when some block was used and evict the one with fewer accesses. Hence it keeps the most used keys in the cache but with better memory usage. As a tradeoff, it has a more complex and costly implementation since it has to add and track age bits in the cache blocks.
+- **LFU (Least Frequently Used)**: imagine that you are using an LRU cache and you have 100 accesses in the last second. There were 80 hits in the key A, 19 hits in key B and 1 hit in key C. If your cache is full, in the next miss that needs to load a new key, your cache would not evict C, because it was the most recent one accessed. This can be really bad since we are probably removing a more usage key (A or B) in favor of C. That is the problem that the LFU algorithm addresses since it keep the most frequent usage keys, it would evict the key C from our example because it has a small access frequency. This is a really interesting model and probably is better suited to most use cases, but as a pattern, it also has more overhead than LRU because how it has to keep track of how many times a block was accessed in relation to how many accesses happened to the cache.
+- **TTL (Time to Live)**: one really common strategy is time to live, an algorithm that evicts blocks that are older than a certain pre-defined timespan. It is used for more volatile data and usually with two cases: for low cardinality keys that can’t grow the memory footprint to the point where one block would be evicted or in combination with other cache strategies (like the ones mentioned above) to provide more refresh opportunities.
+- **Stale data** : we say that a block is stale when it passes its expiration time and should be evicted or refreshed. The stale data strategy is an augmentation of TTL that instead of eliminating the block from the cache once the time to live expires, it runs a refresh function (in case of memoization it reruns the function) that will compute a new value for the key. During this time, the stale (old) data is served for those that access the cache. It can also be the case where if the refresh function fails, it simply maintains the block in the cache, that may be evicted by some algorithm, but is not eliminated by its expiration. This can be a really powerful strategy for increased resilience if your system support living with a possibly long-living stale data.
 
-Besides these there is also more modern algorithms like Windowed TinyLFU (used by [Caffeine](https://github.com/ben-manes/caffeine)), [LIRS](https://en.wikipedia.org/wiki/Cache_replacement_policies#Low_inter-reference_recency_set_(LIRS)) and [ARC](https://en.wikipedia.org/wiki/Cache_replacement_policies#Adaptive_replacement_cache_(ARC)). Note that various discussions about the cache algorithm will reference the theoretical [Bélady’s algorithm](https://en.wikipedia.org/wiki/Cache_replacement_policies#B%C3%A9l%C3%A1dy's_algorithm), so it is good to have a look at it.
+Besides these there is also more modern algorithms like Windowed TinyLFU (used by [Caffeine](https://github.com/ben-manes/caffeine)), [LIRS](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Low_inter-reference_recency_set_(LIRS)>) and [ARC](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Adaptive_replacement_cache_(ARC)>). Note that various discussions about the cache algorithm will reference the theoretical [Bélady’s algorithm](https://en.wikipedia.org/wiki/Cache_replacement_policies#B%C3%A9l%C3%A1dy's_algorithm), so it is good to have a look at it.
 
 ### Local vs Distributed
 
