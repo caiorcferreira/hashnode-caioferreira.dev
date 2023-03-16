@@ -1,5 +1,5 @@
 ---
-title: "Using Technical Debt as your next Tool"
+title: Using Technical Debt as your next Tool
 datePublished: Sun Mar 03 2019 12:00:00 GMT+0000 (Coordinated Universal Time)
 slug: technical-debt-next-tool
 cover: https://raw.githubusercontent.com/caiorcferreira/caioferreira.dev/master/static/img/using-technical-debt-as-your-next-tool/cover.jpg
