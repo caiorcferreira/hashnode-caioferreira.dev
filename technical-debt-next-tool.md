@@ -6,6 +6,7 @@ cover: https://raw.githubusercontent.com/caiorcferreira/caioferreira.dev/master/
 tags: qa,programming,project-management,software-architecture
 domain: caioferreira.dev
 publishAs: caiorcferreira
+ignorePost: true
 ---
 
 # Quick Summary
