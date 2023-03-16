@@ -2,7 +2,7 @@
 title: Using Technical Debt as your next tool
 datePublished: Sun Mar 03 2019 12:00:00 GMT+0000 (Coordinated Universal Time)
 slug: using-technical-debt-next-tool
-cover: https://raw.githubusercontent.com/caiorcferreira/caioferreira.dev/master/static/img/using-technical-debt-as-your-next-tool/cover.jpg
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1678965803781/CEBfFpFHA.jpg?auto=compress
 tags: programming,project-management,software-architecture
 domain: caioferreira.dev
 publishAs: caiorcferreira
@@ -32,7 +32,7 @@ Extending the metaphor, we can see financial debt as a resource uptake from some
 
 Although the best solution vs quick & dirty decision is an excellent example to introduce technical debt, it isn't its only source. As Fowler (2009) [points out](https://martinfowler.com/bliki/TechnicalDebtQuadrant.html), this case is just a Prudent and Deliberate debt, where the team is aware of the cost it is incurring and know how to pay it back. But we can have four types of debt in total.
 
-![](https://raw.githubusercontent.com/caiorcferreira/caioferreira.dev/master/static/img/using-technical-debt-as-your-next-tool/tech-debt-quadrant.png)
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678965851191/MMlnGm0h1.png?auto=compress)
 
 Each debt type has a source associated with it:
 
@@ -47,7 +47,7 @@ Of course, this exploration does not exhaust the possible causes for technical d
 
 Since the debt causes can be so many, projects can experience an ever-increasing technical debt, to the point where adding new functionality, fix current bugs and operate the application becomes impossible.
 
-![](https://raw.githubusercontent.com/caiorcferreira/caioferreira.dev/master/static/img/using-technical-debt-as-your-next-tool/failure-rate.png)
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678965872853/gLv1Yjwzc.png?auto=compress)
 
 This type of scenario can be catastrophic, because while the team lives with this application they will lose agility, will observe an increasing bug count, have loss of motivation, increased stress, long production problems (long living bugs), customer complains and possible single points of failure in case only a few people know how to develop and operate the project.
 

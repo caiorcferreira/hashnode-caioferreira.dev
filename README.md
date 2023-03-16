@@ -8,5 +8,5 @@ Posts are synced to Hashnode automatically.
 
 Important notes:
 
-- Images should be hosted on some CDN
+- Images should be hosted on some CDN, use the [Hashnode CDN Uploader](https://hashnode.com/uploader)
 - MathJax has a unique syntax define [here](https://engineering.hashnode.com/how-to-display-math-equations-in-react-native)
