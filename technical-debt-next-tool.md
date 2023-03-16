@@ -5,7 +5,8 @@ slug: technical-debt-next-tool
 cover: https://raw.githubusercontent.com/caiorcferreira/caioferreira.dev/master/static/img/using-technical-debt-as-your-next-tool/cover.jpg
 tags: qa,programming, management
 domain: caioferreira.dev
-author: caiorcferreira
+publishAs: caiorcferreira
+ignorePost: true
 ---
 
 # Quick Summary
