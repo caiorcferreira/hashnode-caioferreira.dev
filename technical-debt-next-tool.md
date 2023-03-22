@@ -1,6 +1,5 @@
 ---
 title: Using Technical Debt as your next Tool
-datePublished: Sun Mar 03 2019 12:00:00 GMT+0000
 slug: using-technical-debt-next-tool
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1678965803781/CEBfFpFHA.jpg?auto=compress
 tags: programming,project-management,software-architecture,qa
