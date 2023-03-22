@@ -4,6 +4,7 @@ slug: using-technical-debt-next-tool
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1678965803781/CEBfFpFHA.jpg?auto=compress
 tags: programming,project-management,software-architecture,qa
 domain: caioferreira.dev
+ignorePost: true
 ---
 
 # Quick Summary
