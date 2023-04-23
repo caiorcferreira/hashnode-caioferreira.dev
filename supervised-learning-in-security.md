@@ -1,6 +1,6 @@
 ---
 title: Reflections about Supervised Learning on Security
-slug: supervised-learning-in-security
+slug: reflections-supervised-learning-in-security
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1682263607494/idfExTZ29.jpg?auto=format
 tags: ml,security,supervised-learning,ai
 domain: caioferreira.dev
